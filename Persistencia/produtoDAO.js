@@ -113,7 +113,7 @@ export default class ProdutoDAO {
     async excluir(produto) {
         if (produto instanceof Produto) {
             const conexao = await conectar();
-            const sql = `DELETE FROM produto WHERE codigo = ?`;
+            const sql = `DELETE FROM produto WHERE prod_codigo = ?`;
             let parametros = [
                 produto.codigo
             ]; //dados do produto
