@@ -38,7 +38,7 @@ export default class ProdutoDAO {
         if (produto instanceof Produto) {
             const conexao = await conectar();
             const sql = `INSERT INTO produto(prod_descricao,prod_precoCusto,prod_precoVenda,prod_qtdEstoque,prod_urlImagem,prod_dataValidade, fk_codigo_cat)
-                values(?,?,?,?,?,str_to_date(?,'%d/%m/%Y'),?)
+                values(?,?,?,?,?,str_to_date(?,'%d-%m-%Y'),?)
             `;
             let parametros = [
                 produto.descricao,
@@ -57,7 +57,7 @@ export default class ProdutoDAO {
     async alterar(produto) {
         if (produto instanceof Produto) {
             const conexao = await conectar();
-            const sql = `UPDATE produto SET prod_descricao=?,prod_precoCusto=?,prod_precoVenda=?,prod_qtdEstoque=?,prod_urlImagem=?,prod_dataValidade=str_to_date(?,'%d/%m/%Y'), fk_codigo_cat = ?
+            const sql = `UPDATE produto SET prod_descricao=?,prod_precoCusto=?,prod_precoVenda=?,prod_qtdEstoque=?,prod_urlImagem=?,prod_dataValidade=str_to_date(?,'%d-%m-%Y'), fk_codigo_cat = ?
                 WHERE prod_codigo = ?
             `;
             let parametros = [
@@ -113,7 +113,7 @@ export default class ProdutoDAO {
     async excluir(produto) {
         if (produto instanceof Produto) {
             const conexao = await conectar();
-            const sql = `DELETE FROM produto WHERE codigo = ?`;
+            const sql = `DELETE FROM produto WHERE prod_codigo = ?`;
             let parametros = [
                 produto.codigo
             ]; //dados do produto
