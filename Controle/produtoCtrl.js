@@ -22,7 +22,7 @@ export default class ProdutoCtrl {
                     //pseudo validação
                     if (descricao && precoCusto > 0 &&
                         precoVenda > 0 && qtdEstoque >= 0 &&
-                        urlImagem && dataValidade && parseInt(categoria.codigo) > 0) {
+                        urlImagem && dataValidade) {
                         //gravar o produto
 
                         const produto = new Produto(0,
