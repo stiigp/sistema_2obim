@@ -9,7 +9,7 @@ export default async function conectar(){
         return await poolConexoes.getConnection();
     }
     else{
-        global.poolConexoes = await mysql.createPool({
+        global.poolConexoes = mysql.createPool({
             "host":process.env.IP_BANCO_DE_DADOS,
             "port":process.env.PORTA_BANCO_DE_DADOS,
             "database":process.env.BASE_DE_DADOS,

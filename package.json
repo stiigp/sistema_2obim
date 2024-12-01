@@ -1,7 +1,7 @@
 {
-  "name": "servidor",
+  "name": "sistema_2obim",
   "version": "1.0.0",
-  "description": "Exemplo de um servidor http",
+  "description": "Trabalho do renato",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -20,8 +20,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "mysql2": "^3.9.7",
-    "web-vitals": "^4.2.4"
+    "express": "^4.21.1",
+    "mysql2": "^3.11.3",
+    "web-vitals": "^4.2.4",
+    "sistema_2obim": "file:"
   }
 }
