@@ -28,9 +28,10 @@ app.use(express.json());
 //configurar a aplicação para responder requisições não importando a origem
 app.use(cors({
     "origin": "*",
-    "Access-Control-Allow-Origin": '*'
+    "Access-Control-Allow-Origin": '*',
+    "methods": ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
+    "allowedHeaders": ['Content-Type', 'Authorization'],
 }));
-
 
 app.use("/produtos", rotaProduto);
 app.use("/categorias", rotaCategoria);
