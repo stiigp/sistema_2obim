@@ -27,22 +27,19 @@ app.use(express.json());
 
 //configurar a aplicação para responder requisições não importando a origem
 app.use(cors({
-                "origin":"*",
-                "Access-Control-Allow-Origin":'*'
-        }));
-
-//app utilize a pasta 'publico' para disponibilizar o conteúdo ali armazenado
-app.use(express.static('./publico'));
+    "origin": "*",
+    "Access-Control-Allow-Origin": '*'
+}));
 
 
-app.use("/produtos",rotaProduto);
+app.use("/produtos", rotaProduto);
 app.use("/categorias", rotaCategoria);
 app.use("/usuarios", rotaUsuario);
 app.use("/fornecedores", rotaFornecedor);
 app.use("/clientes", rotaCliente);
-//app.use('/clientes',rotaCliente);
-//app.use('/fornecedores', rotaFornecedor);
-//app.use('/usuarios', rotaUsuario);
+app.use('/', (req, res) => {
+    res.send("Servidor Escutando !!!");
+});
 
 /*app.get('/',(requisicao, resposta)=>{
     resposta.send('<h1>Página principal</h1>');
