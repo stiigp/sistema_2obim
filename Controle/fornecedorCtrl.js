@@ -1,4 +1,4 @@
-import Fornecedor from "../Modelo/Fornecedor.js";
+import Fornecedor from "../Modelo/fornecedor.js";
 
 export default class FornecedorCtrl {
 

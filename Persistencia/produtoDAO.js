@@ -3,7 +3,7 @@ import Produto from "../Modelo/produto.js";
 import Categoria from "../Modelo/categoria.js";
 
 import conectar from "./Conexao.js";
-import Fornecedor from "../Modelo/Fornecedor.js";
+import Fornecedor from "../Modelo/fornecedor.js";
 export default class ProdutoDAO {
     constructor() {
         this.init();

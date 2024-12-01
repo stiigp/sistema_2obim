@@ -1,4 +1,4 @@
-import Cliente from "../Modelo/Cliente.js";
+import Cliente from "../Modelo/cliente.js";
 
 export default class ClienteCtrl {
 
