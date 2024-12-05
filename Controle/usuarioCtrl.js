@@ -127,7 +127,7 @@ export default class UsrCtrl {
                     if (resp && resp[0]?.senha === senha) {
                         resposta.status(200).json({
                             status: true,
-                            perfil: resposta.perfil,
+                            perfil: resp[0].perfil,
                             mensagem: "Autenticado com sucesso!"
                         })
                     } else {
