@@ -55,10 +55,24 @@ export default class UsuarioDAO {
             sql = `SELECT * FROM usuario WHERE usu_cod = ?`;
             parametros = [termo];
         }
+
+
+        let listaUsers = [];
+
         const [linhas, campos] = await conexao.execute(sql, parametros);
-        
+
+        for (const linha of linhas) {
+            const user = {
+                "codigo": linha.usu_cod,
+                "nome": linha.usu_nome,
+                "perfil": linha.usu_perfil,
+                "senha": linha.usu_senha
+            }
+            listaUsers.push(user);
+        }
+
         await conexao.release();
-        return linhas?linhas[0]:null;
+        return listaUsers;
     }
 
     async excluir(usuario) {

@@ -120,17 +120,14 @@ export default class UsrCtrl {
             const nome = requisicao.body.nome
             const senha = requisicao.body.senha
 
-            console.log(nome);
-            console.log(senha);
 
             if (nome && senha) {
                 const user = new Usuario(nome);
                 user.consultar(nome).then((resp) => {
-                    console.log(resp)
-                    if (resp && resp.usu_senha === senha) {
+                    if (resp && resp[0]?.senha === senha) {
                         resposta.status(200).json({
                             status: true,
-                            perfil: resposta.usu_perfil,
+                            perfil: resposta.perfil,
                             mensagem: "Autenticado com sucesso!"
                         })
                     } else {
