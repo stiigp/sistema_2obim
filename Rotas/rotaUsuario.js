@@ -7,12 +7,13 @@ import UsrCtrl from "../Controle/usuarioCtrl.js";
 const usuarioCtrl = new UsrCtrl();
 const rotaUsuario = Router();
 
-rotaUsuario.post("/", usuarioCtrl.gravar);
+rotaUsuario.post("/login", usuarioCtrl.login);
 rotaUsuario.put("/:codigo", usuarioCtrl.editar);
 rotaUsuario.patch("/:codigo", usuarioCtrl.editar);
 rotaUsuario.delete("/:codigo", usuarioCtrl.excluir);
 rotaUsuario.get("/:codigo", usuarioCtrl.consultar);
 rotaUsuario.get("/", usuarioCtrl.consultar);
+rotaUsuario.post("/", usuarioCtrl.gravar);
 
 export default rotaUsuario;
 

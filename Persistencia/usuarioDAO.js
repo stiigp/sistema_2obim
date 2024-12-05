@@ -12,7 +12,7 @@ export default class UsuarioDAO {
             const sql = `
             CREATE TABLE IF NOT EXISTS usuario (
                 usu_cod INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                usu_nome VARCHAR(25) NOT NULL,
+                usu_nome VARCHAR(25) NOT NULL UNIQUE,
                 usu_perfil VARCHAR(15) NOT NULL,
                 usu_senha VARCHAR(35) NOT NULL
             )`;
@@ -55,15 +55,10 @@ export default class UsuarioDAO {
             sql = `SELECT * FROM usuario WHERE usu_cod = ?`;
             parametros = [termo];
         }
-        const [linhas] = await conexao.execute(sql, parametros);
-        const listaUsuarios = linhas.map(linha => new Usuario(
-            linha.usu_cod,
-            linha.usu_nome,
-            linha.usu_perfil,
-            linha.usu_senha
-        ));
+        const [linhas, campos] = await conexao.execute(sql, parametros);
+        
         await conexao.release();
-        return listaUsuarios;
+        return linhas?linhas[0]:null;
     }
 
     async excluir(usuario) {

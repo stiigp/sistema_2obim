@@ -113,4 +113,44 @@ export default class UsrCtrl {
             });
         }
     }
+
+    login(requisicao, resposta) {
+        resposta.type("application/json");
+        if (requisicao.method == "POST") {
+            const nome = requisicao.body.nome
+            const senha = requisicao.body.senha
+
+            console.log(nome);
+            console.log(senha);
+
+            if (nome && senha) {
+                const user = new Usuario(nome);
+                user.consultar(nome).then((resp) => {
+                    console.log(resp)
+                    if (resp && resp.usu_senha === senha) {
+                        resposta.status(200).json({
+                            status: true,
+                            perfil: resposta.usu_perfil,
+                            mensagem: "Autenticado com sucesso!"
+                        })
+                    } else {
+                        resposta.status(400).json({
+                            status:false,
+                            mensagem: "Não foi possível autenticar!"
+                        })
+                    }
+                }).catch(erro => resposta.status(500).json({
+                    status: false,
+                    mensagem: "Erro ao autenticar usuário: " + erro.message
+                }));
+
+
+            }
+        } else {
+            resposta.status(400).json({
+                status: false,
+                mensagem: "Requisição inválida! Consulte a documentação da API."
+            });
+        }
+    }
 }
